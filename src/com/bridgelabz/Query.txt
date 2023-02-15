@@ -92,3 +92,19 @@ mysql> select * from addressbook;
 3 rows in set (0.00 sec)
 
 --------------------------------------------------------------------------------------------------------
+UC 5 - Ability to delete a contact person using person's name.
+--------------------------------------------------------------------------------------------------------
+
+mysql> delete from addressbook where FirstName = 'Nilam';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from addressbook;
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+| FirstName | LastName | Address  | City    | State  | Zip    | PhoneNo    | Email             |
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+| Shiwani   | Paunikar | Jogithana| Umred   | MH     | 443007 | 8249837408 | shiw@gmail.com    |
+| Sonu      | Bhide    | Itwari   | Umred   | MH     | 754033 | 7008565646 | sonu@gmail.com    |
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+2 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------------
