@@ -47,3 +47,26 @@ mysql> show tables;
 1 row in set (0.00 sec)
 
 --------------------------------------------------------------------------------------------------------
+UC 3 - Ability to insert new Contacts to Address Book.
+--------------------------------------------------------------------------------------------------------
+
+mysql> insert into addressbook(
+    -> FirstName,LastName,Address,City,State,Zip,PhoneNo,Email) values
+    -> ('Shiwani','Paunikar','Jogithana','Umred','MH','443007','8908641811','shiw@gmail.com'),
+    -> ('Sonu','Bhide','Itwari','Umred','Umred','444021','7008565646','sonu@gmail.com'),
+    -> ('Nilam','Bedi','Jagnade','Nagpur','Naqpur','444001','9937585846','nilam50@gmail.com');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook
+    -> ;
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+| FirstName | LastName | Address  | City    | State  | Zip    | PhoneNo    | Email             |
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+| Shiwani   | Paunikar | Jogithana| Umred   | MH     | 443007 | 8908641811 | shiw@gmail.com    |
+| Sonu      | Bhide    | Itwari   | Umred   | MH     | 444021 | 7008565646 | sonu@gmail.com    |
+| Nilam     | Bedi     | Jagnade  | Nagpur  | MH     | 444001 | 9937585846 | nilam50@gmail.com |
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+3 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------------
