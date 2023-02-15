@@ -70,3 +70,25 @@ mysql> select * from addressbook
 3 rows in set (0.00 sec)
 
 --------------------------------------------------------------------------------------------------------
+UC 4 - Ability to edit existing contact person using their name.
+--------------------------------------------------------------------------------------------------------
+
+mysql> update addressbook set PhoneNo = '8249837408' where FirstName = 'Shiwani';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set Zip = '754033' where FirstName = 'Sonu';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+| FirstName | LastName | Address  | City    | State  | Zip    | PhoneNo    | Email             |
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+| Shiwani   | Paunikar | Jogithana| Umred   | MH     | 443007 | 8249837408 | shiw@gmail.com    |
+| Sonu      | Bhide    | Itwari   | Umred   | MH     | 754033 | 7008565646 | sonu@gmail.com    |
+| Nilam     | Bedi     | Jagnade  | Nagpur  | MH     | 444001 | 9937585846 | nilam50@gmail.com |
++-----------+----------+----------+---------+--------+--------+------------+-------------------+
+3 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------------
