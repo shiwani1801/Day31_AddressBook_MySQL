@@ -111,18 +111,12 @@ mysql> select * from addressbook;
 UC 6 - Ability to retrieve person's belonging to a city or state from the Address Book.
 --------------------------------------------------------------------------------------------------------
 
-mysql> insert into addressbook(
-    ->  FirstName,LastName,Address,City,State,Zip,PhoneNo,Email) values
-    ->  ('Prati','Paunikar','Thane','Mumbai','MH','440221','7008456545','prati@gmail.com');
-Query OK, 1 row affected (0.02 sec)
-
 mysql> select * from addressbook where city = 'Umred' or State = 'MH';
 +-----------+----------+-----------+--------+-------+--------+------------+-----------------+
 | FirstName | LastName | Address   | City   | State | Zip    | PhoneNo    | Email           |
 +-----------+----------+-----------+--------+-------+--------+------------+-----------------+
 | Shiwani   | Paunikar | Jogithana | Umred  | MH    | 443007 | 8249837408 | shiw@gmail.com  |
 | Sonu      | Bhide    | Itwari    | Umred  | MH    | 754033 | 7008565646 | sonu@gmail.com  |
-| Prati     | Paunikar | Thane     | Mumbai | MH    | 440221 | 7008456545 | prati@gmail.com |
 +-----------+----------+-----------+--------+-------+--------+------------+-----------------+
 3 rows in set (0.00 sec)
 
