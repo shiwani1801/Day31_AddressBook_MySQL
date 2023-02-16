@@ -170,6 +170,7 @@ mysql> select count(*) from addressbook where City = 'Umred';
 |        2 |
 +----------+
 1 row in set (0.00 sec)
+
 UC 8 - Ability to retrieve entries sorted alphabetically by Person’s name for a given city.
 -------------------------------------------------------------------------------------------------------
 
@@ -181,3 +182,76 @@ mysql> select * from addressbook where City = 'Umred' order by FirstName ASC;
 | Sonu      | Bhide    | Itwari    | Umred | MH    | 754033 | 7008565646 | sonu@gmail.com |
 +-----------+----------+-----------+-------+-------+--------+------------+----------------+
 2 rows in set (0.01 sec)
+
+UC 9 - Ability to identify each Address Book with name and type.
+       - Here the type could Family, Friends, Profession, etc.
+       - Alter Address Book to add name and type.
+
+--------------------------------------------------------------------------------------------------------
+mysql>  alter table addressbook add Name Varchar(20) after Email;
+Query OK, 0 rows affected (0.25 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table addressbook add Type Varchar(20) after Name;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+------+------+
+| FirstName | LastName | Address   | City   | State | Zip    | PhoneNo    | Email           | Name | Type |
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+------+------+
+| Shiwani   | Paunikar | Jogithana | Umred  | MH    | 443007 | 8249837408 | shiw@gmail.com  | NULL | NULL |
+| Sonu      | Bhide    | Itwari    | Umred  | MH    | 754033 | 7008565646 | sonu@gmail.com  | NULL | NULL |
+| Prati     | Paunikar | Thane     | Mumbai | MH    | 440221 | 7008456545 | prati@gmail.com | NULL | NULL |
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+------+------+
+3 rows in set (0.01 sec)
+
+mysql> update addressbook set Name = 'PhoneContact' where FirstName = 'Shiwani' or FirstName = 'Sonu';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------+
+| FirstName | LastName | Address   | City   | State | Zip    | PhoneNo    | Email           | Name         | Type |
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------+
+| Shiwani   | Paunikar | Jogithana | Umred  | MH    | 443007 | 8249837408 | shiw@gmail.com  | PhoneContact | NULL |
+| Sonu      | Bhide    | Itwari    | Umred  | MH    | 754033 | 7008565646 | sonu@gmail.com  | PhoneContact | NULL |
+| Prati     | Paunikar | Thane     | Mumbai | MH    | 440221 | 7008456545 | prati@gmail.com | NULL         | NULL |
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------+
+3 rows in set (0.00 sec)
+
+mysql> update addressbook set Name = 'SimContact' where FirstName = 'Prati';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------+
+| FirstName | LastName | Address   | City   | State | Zip    | PhoneNo    | Email           | Name         | Type |
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------+
+| Shiwani   | Paunikar | Jogithana | Umred  | MH    | 443007 | 8249837408 | shiw@gmail.com  | PhoneContact | NULL |
+| Sonu      | Bhide    | Itwari    | Umred  | MH    | 754033 | 7008565646 | sonu@gmail.com  | PhoneContact | NULL |
+| Prati     | Paunikar | Thane     | Mumbai | MH    | 440221 | 7008456545 | prati@gmail.com | SimContact   | NULL |
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------+
+3 rows in set (0.00 sec)
+
+mysql> update addressbook set Type = 'Friends' where FirstName = 'Shiwani';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set Type = 'Family' where FirstName = 'Prati';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set Type = 'Profession' where FirstName = 'Sonu';
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------------+
+| FirstName | LastName | Address   | City   | State | Zip    | PhoneNo    | Email           | Name         | Type       |
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------------+
+| Shiwani   | Paunikar | Jogithana | Umred  | MH    | 443007 | 8249837408 | shiw@gmail.com  | PhoneContact | Friends    |
+| Sonu      | Bhide    | Itwari    | Umred  | MH    | 754033 | 7008565646 | sonu@gmail.com  | PhoneContact | Profession |
+| Prati     | Paunikar | Thane     | Mumbai | MH    | 440221 | 7008456545 | prati@gmail.com | SimContact   | Family     |
++-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------------+
+3 rows in set (0.00 sec)
