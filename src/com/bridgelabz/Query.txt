@@ -290,3 +290,22 @@ mysql>  select count(Type) from addressbook;
 +-------------+
 1 row in set (0.00 sec)
 ----------------------------------------------------------------------------------------------
+
+UC 11 - Ability to add person to both Friend and Family.
+--------------------------------------------------------------------------------------------------------
+mysql> insert into addressbook(
+    ->  FirstName,LastName,Address,City,State,Zip,PhoneNo,Email,Name,Type) values
+    ->  ('Ravina','Maudekar','Bhisinaka','Banglore','karnataka','654784','9124758282','ravi@gmail.com','SimContact','Friends,Family');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from addressbook;
++-----------+----------+-----------+----------+-----------+--------+------------+-----------------+--------------+----------------+
+| FirstName | LastName | Address   | City     | State     | Zip    | PhoneNo    | Email           | Name         | Type           |
++-----------+----------+-----------+----------+-----------+--------+------------+-----------------+--------------+----------------+
+| Shiwani   | Paunikar | Jogithana | Umred    | MH        | 443007 | 8249837408 | shiw@gmail.com  | PhoneContact | Friends        |
+| Sonu      | Bhide    | Itwari    | Umred    | MH        | 754033 | 7008565646 | sonu@gmail.com  | PhoneContact | Profession     |
+| Prati     | Paunikar | Thane     | Mumbai   | MH        | 440221 | 7008456545 | prati@gmail.com | SimContact   | Family         |
+| Ravina    | Maudekar | Bhisinaka | Banglore | karnataka | 654784 | 9124758282 | ravi@gmail.com  | SimContact   | Friends,Family |
++-----------+----------+-----------+----------+-----------+--------+------------+-----------------+--------------+----------------+
+4 rows in set (0.01 sec)
+--------------------------------------------------------------------------------------------------------------
