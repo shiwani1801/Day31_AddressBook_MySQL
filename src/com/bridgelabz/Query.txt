@@ -170,7 +170,7 @@ mysql> select count(*) from addressbook where City = 'Umred';
 |        2 |
 +----------+
 1 row in set (0.00 sec)
-
+--------------------------------------------------------------------------------------------------------
 UC 8 - Ability to retrieve entries sorted alphabetically by Person’s name for a given city.
 -------------------------------------------------------------------------------------------------------
 
@@ -182,7 +182,7 @@ mysql> select * from addressbook where City = 'Umred' order by FirstName ASC;
 | Sonu      | Bhide    | Itwari    | Umred | MH    | 754033 | 7008565646 | sonu@gmail.com |
 +-----------+----------+-----------+-------+-------+--------+------------+----------------+
 2 rows in set (0.01 sec)
-
+-------------------------------------------------------------------------------------------------------
 UC 9 - Ability to identify each Address Book with name and type.
        - Here the type could Family, Friends, Profession, etc.
        - Alter Address Book to add name and type.
@@ -255,3 +255,38 @@ mysql> select * from addressbook;
 | Prati     | Paunikar | Thane     | Mumbai | MH    | 440221 | 7008456545 | prati@gmail.com | SimContact   | Family     |
 +-----------+----------+-----------+--------+-------+--------+------------+-----------------+--------------+------------+
 3 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------
+UC 10 - Ability to get number of contact persons i.e. count by type.
+--------------------------------------------------------------------------------------------------------
+mysql>  select count(*) from addressbook where Type = 'Family';
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.13 sec)
+
+mysql> select count(*) from addressbook where Type = 'Friends';
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from addressbook where Type = 'Profession';
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql>  select count(Type) from addressbook;
++-------------+
+| count(Type) |
++-------------+
+|           3 |
++-------------+
+1 row in set (0.00 sec)
+----------------------------------------------------------------------------------------------
